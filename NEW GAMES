@@ -243,17 +243,17 @@ html {
   width: 100%;
 }
 
-.game .specs {
+.game-card .specs {
   margin-top: auto;
   padding-top: 12px;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-.game .specs {
+.game-card .specs {
   margin-top: 8px;
 }
 
-    .game::after {
+    .game-card::after {
       content: "";
       position: absolute;
       inset: 0;
@@ -263,7 +263,7 @@ html {
       pointer-events: none;
     }
 
-    .game:hover::after { opacity: 1; }
+    .game-card:hover::after { opacity: 1; }
 
     .meta {
       font-size: 13px;
