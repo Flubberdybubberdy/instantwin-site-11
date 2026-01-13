@@ -342,12 +342,7 @@ html {
   color: #cfd6e6;
 }
 
-.game-images {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 24px;
-  margin: 40px 0;
-}
+
 
 /* GAME DETAIL IMAGES — MATCH ORIGINAL SITE */
 
