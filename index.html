@@ -121,6 +121,40 @@ section {
   border-radius: 12px;
   display: block;
 }
+  /* =============================
+   GAME CARD INTERACTION
+============================= */
+
+.game-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.55);
+}
+
+.game-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0,240,255,0.06),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.game-card:hover::after {
+  opacity: 1;
+}
+
 </style>
 </head>
 
