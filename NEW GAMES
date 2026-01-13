@@ -235,7 +235,10 @@ section {
 
 <header class="site-header">
   <div class="brand-wrap">
+
     <img src="./concept_gaming_logoFinal.png" alt="Concept Gaming" class="brand-logo">
+
+
     <span class="brand-tagline">Instant Win Supplier</span>
   </div>
 </header>
