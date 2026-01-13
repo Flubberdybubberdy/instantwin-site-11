@@ -360,11 +360,13 @@ html {
 .game-images img {
   width: 100%;
   height: auto;
-  object-fit: initial;
+  object-fit: contain;
   border-radius: 12px;
-  background: #0b1020; /* ← THIS fixes white panels */
-  box-shadow: none;
+  background: #0b1020;
+  display: block;
 }
+
+
 
 
 
@@ -434,7 +436,7 @@ html {
 <header class="site-header">
   <div class="brand-wrap">
     <img
-      src="./concept_gaming_logoFinal.png"
+      src="./assets/concept_gaming_logoFinal.png"
       alt="Concept Gaming"
       class="brand-logo"
     />
@@ -836,7 +838,7 @@ html {
     <div>98% RTP</div>
     <div>Max Win x10,000</div>
   </div>
-</section>
+
 </section>
   <section id="neon-blackjack" class="game-detail">
   <h2>Neon Blackjack</h2>
