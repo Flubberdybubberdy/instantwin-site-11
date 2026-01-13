@@ -357,15 +357,16 @@ html {
   gap: 24px;
   margin: 40px 0;
 }
-
 .game-images img {
   width: 100%;
   height: auto;
   object-fit: initial;
   border-radius: 12px;
-  background: transparent;
+  background: #0b1020; /* ← THIS fixes white panels */
   box-shadow: none;
 }
+
+
 
 @media (max-width: 900px) {
   .game-images {
