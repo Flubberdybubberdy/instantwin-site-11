@@ -88,7 +88,6 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
 }
-
 .game-card {
   background: radial-gradient(120% 120% at 50% 0%, #162033 0%, #0e1322 60%);
   border: 1px solid #1f2a40;
@@ -96,7 +95,12 @@ section {
   padding: 18px;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
+
 
 .game-icon-wrap {
   height: 300px;
@@ -125,11 +129,7 @@ section {
    GAME CARD INTERACTION
 ============================= */
 
-.game-card {
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
+
 
 .game-card:hover {
   transform: translateY(-6px);
