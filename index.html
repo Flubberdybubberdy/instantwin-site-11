@@ -8,16 +8,12 @@
 <style>
 :root {
   --bg: #0b0e14;
-  --panel: #121826;
   --accent: #00f0ff;
-  --accent-soft: rgba(0,240,255,0.15);
   --text: #e6e9f0;
   --muted: #9aa3b2;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Inter, Arial, sans-serif;
@@ -31,7 +27,8 @@ section {
   padding: 80px 20px;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
+
 .site-header {
   position: sticky;
   top: 0;
@@ -60,31 +57,40 @@ section {
   padding-left: 14px;
 }
 
-/* HERO */
+/* ================= HERO ================= */
+
 .hero {
   text-align: center;
   padding-top: 120px;
 }
 
-/* BUTTONS */
+/* ================= BUTTONS ================= */
+
 .btn {
-  padding: 14px 22px;
+  padding: 12px 20px;
   border-radius: 8px;
   border: 1px solid var(--accent);
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
   display: inline-block;
+  transition: all 0.2s ease;
 }
 
-/* GRID */
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ================= GRID ================= */
+
 .games {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
 }
 
-/* GAME CARD */
+/* ================= CARD ================= */
+
 .game-card {
   background: radial-gradient(120% 120% at 50% 0%, #162033 0%, #0e1322 60%);
   border: 1px solid #1f2a40;
@@ -92,12 +98,12 @@ section {
   padding: 18px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .game-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.55);
+  box-shadow: 0 12px 40px rgba(0,0,0,.55);
 }
 
 .game-icon-wrap {
@@ -116,7 +122,8 @@ section {
   border-radius: 10px;
 }
 
-/* FOOTER AREA IN CARD */
+/* ================= FOOTER ================= */
+
 .card-footer {
   margin-top: auto;
   display: flex;
@@ -124,7 +131,6 @@ section {
   gap: 12px;
 }
 
-/* SPECS */
 .specs {
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -147,7 +153,7 @@ section {
 
 <header class="site-header">
   <div class="brand-wrap">
-    <img src="./concept_gaming_logoFinal.png" class="brand-logo" alt="Concept Gaming">
+    <img src="./concept_gaming_logoFinal.png" class="brand-logo">
     <span class="brand-tagline">Instant Win Supplier</span>
   </div>
 </header>
@@ -162,7 +168,7 @@ section {
 
   <div class="games">
 
-    <!-- 1 -->
+    <!-- CHAIN REACTOR -->
     <div class="game-card">
       <h3>Chain Reactor</h3>
       <div class="game-icon-wrap">
@@ -177,7 +183,7 @@ section {
       </div>
     </div>
 
-    <!-- 2 -->
+    <!-- NEON BLACKJACK -->
     <div class="game-card">
       <h3>Neon Blackjack</h3>
       <div class="game-icon-wrap">
@@ -192,7 +198,7 @@ section {
       </div>
     </div>
 
-    <!-- 3 -->
+    <!-- NEON NOVA -->
     <div class="game-card">
       <h3>Neon Nova</h3>
       <div class="game-icon-wrap">
@@ -207,7 +213,7 @@ section {
       </div>
     </div>
 
-    <!-- 4 -->
+    <!-- QUANTUM MINES -->
     <div class="game-card">
       <h3>Quantum Mines</h3>
       <div class="game-icon-wrap">
@@ -222,62 +228,77 @@ section {
       </div>
     </div>
 
-    <!-- 5 -->
+    <!-- SOVEREIGN -->
     <div class="game-card">
-      <h3>Sovereign Invaders</h3>
+      <h3>Sovereign</h3>
       <div class="game-icon-wrap">
-        <img src="./sovereign-invaders-icon.png" class="game-icon">
+        <img src="./sovereign-icon.png" class="game-icon">
       </div>
-      <p>Retro alien defence with escalating payouts.</p>
+      <p>Premium risk-reward design.</p>
       <div class="card-footer">
-        <a href="#sovereign-invaders" class="btn">View Game</a>
+        <a href="#sovereign" class="btn">View Game</a>
         <div class="specs">
           <div>High Vol</div><div>96% RTP</div><div>x8,000</div>
         </div>
       </div>
     </div>
 
-    <!-- 6 -->
+    <!-- LIMBO -->
     <div class="game-card">
-      <h3>Sovereign Plinko</h3>
+      <h3>Limbo</h3>
       <div class="game-icon-wrap">
-        <img src="./sovereign-plinko-icon.png" class="game-icon">
+        <img src="./limbo-icon.png" class="game-icon">
       </div>
-      <p>Classic Plinko with modern volatility tuning.</p>
+      <p>Classic crash-style instant gameplay.</p>
       <div class="card-footer">
-        <a href="#sovereign-plinko" class="btn">View Game</a>
+        <a href="#limbo" class="btn">View Game</a>
         <div class="specs">
-          <div>Med–High</div><div>97% RTP</div><div>x5,000</div>
+          <div>High Vol</div><div>97% RTP</div><div>x10,000</div>
         </div>
       </div>
     </div>
 
-    <!-- 7 -->
+    <!-- NEON NOVA WHEEL -->
     <div class="game-card">
-      <h3>Sovereign Labyrinth</h3>
+      <h3>Neon Nova Wheel</h3>
       <div class="game-icon-wrap">
-        <img src="./sovereign-labyrinth-icon.png" class="game-icon">
+        <img src="./neon-nova-wheel-icon.png" class="game-icon">
       </div>
-      <p>Maze navigation with escalating multipliers.</p>
+      <p>Wheel-based volatility spikes.</p>
       <div class="card-footer">
-        <a href="#sovereign-labyrinth" class="btn">View Game</a>
+        <a href="#neon-nova-wheel" class="btn">View Game</a>
         <div class="specs">
-          <div>High Vol</div><div>96% RTP</div><div>x7,500</div>
+          <div>High Vol</div><div>96% RTP</div><div>x5,000</div>
         </div>
       </div>
     </div>
 
-    <!-- 8 -->
+    <!-- SUPER POKER -->
     <div class="game-card">
-      <h3>Vault of the Sovereign</h3>
+      <h3>Super Poker</h3>
       <div class="game-icon-wrap">
-        <img src="./vault-of-the-sovereign-icon.png" class="game-icon">
+        <img src="./super-poker-icon.png" class="game-icon">
       </div>
-      <p>Risk-reward vault cracking mechanics.</p>
+      <p>Instant poker mechanics.</p>
       <div class="card-footer">
-        <a href="#vault-of-the-sovereign" class="btn">View Game</a>
+        <a href="#super-poker" class="btn">View Game</a>
         <div class="specs">
-          <div>High Vol</div><div>97% RTP</div><div>x12,000</div>
+          <div>Med Vol</div><div>98% RTP</div><div>x3,000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEON HEARTBEAT -->
+    <div class="game-card">
+      <h3>Neon Heartbeat</h3>
+      <div class="game-icon-wrap">
+        <img src="./neon-heartbeat-icon.png" class="game-icon">
+      </div>
+      <p>Rhythm-driven instant wins.</p>
+      <div class="card-footer">
+        <a href="#neon-heartbeat" class="btn">View Game</a>
+        <div class="specs">
+          <div>High Vol</div><div>97% RTP</div><div>x7,500</div>
         </div>
       </div>
     </div>
@@ -291,6 +312,3 @@ section {
 
 </body>
 </html>
-
-
-
