@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -25,7 +25,11 @@
       color:var(--text);
     }
 
-    section{padding:80px 20px;max-width:1200px;margin:0 auto}
+    section{
+      padding:80px 20px;
+      max-width:1200px;
+      margin:0 auto;
+    }
 
     h1,h2,h3{margin:0 0 12px 0;letter-spacing:.3px}
     h1{font-size:42px}
@@ -33,6 +37,7 @@
     h3{font-size:18px;min-height:44px}
     p{margin:0 0 16px 0;color:var(--muted);line-height:1.6;min-height:52px}
 
+    /* Header */
     .site-header{
       position:sticky;top:0;z-index:100;
       padding:18px 28px;
@@ -40,43 +45,50 @@
       backdrop-filter:blur(8px);
       border-bottom:1px solid rgba(255,255,255,0.06);
     }
-
     .brand-wrap{
       max-width:1200px;margin:0 auto;
       display:flex;align-items:center;gap:14px;
     }
     .brand-logo{
-      height:48px;
+      height:48px;display:block;
       filter:drop-shadow(0 0 10px rgba(0,240,255,0.15));
     }
     .brand-tagline{
       font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
-      border-left:1px solid rgba(255,255,255,0.12);padding-left:14px;
+      border-left:1px solid rgba(255,255,255,0.12);padding-left:14px;line-height:1;
     }
 
+    /* Hero */
     .hero{padding-top:120px;text-align:center}
     .hero p{max-width:720px;margin:0 auto 32px auto;min-height:auto}
     .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 
+    /* Buttons */
     .btn{
       padding:14px 22px;border-radius:8px;
       border:1px solid var(--accent);
       color:var(--accent);
       background:linear-gradient(180deg,rgba(0,240,255,.08),rgba(0,240,255,.02));
-      text-decoration:none;font-weight:600;
-      display:inline-flex;align-items:center;justify-content:center;
-      transition:.18s ease;
+      text-decoration:none;font-weight:600;letter-spacing:.2px;
+      display:inline-flex;align-items:center;justify-content:center;gap:6px;
+      transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;
     }
     .btn.primary{background:var(--accent);color:#000}
-    .btn:hover{transform:translateY(-2px)}
+    .btn:hover{
+      transform:translateY(-2px);
+      border-color:rgba(0,240,255,.6);
+      background:linear-gradient(180deg,rgba(0,240,255,.16),rgba(0,240,255,.04));
+      box-shadow:0 6px 18px rgba(0,0,0,.45),0 0 0 1px rgba(0,240,255,.12);
+    }
 
+    /* Portfolio grid */
     .games{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
       gap:24px;
     }
 
-    .game-card{
+    #portfolio .game-card{
       background:radial-gradient(120% 120% at 50% 0%,#162033 0%,#0e1322 60%);
       border:1px solid #1f2a40;
       border-radius:14px;
@@ -85,7 +97,7 @@
       flex-direction:column;
     }
 
-    .game-icon-wrap{
+    #portfolio .game-icon-wrap{
       height:300px;
       display:flex;
       align-items:center;
@@ -93,12 +105,12 @@
       margin:8px 0 16px;
     }
 
-    .game-icon{
-      max-width:100%;
+    #portfolio .game-icon{
       max-height:100%;
+      max-width:100%;
       object-fit:contain;
-      background:#0b1020;
       border-radius:10px;
+      background:#0b1020;
     }
 
     .meta{font-size:13px;color:var(--muted);margin-bottom:12px}
@@ -108,6 +120,7 @@
       grid-template-columns:repeat(3,1fr);
       gap:6px;
       margin-top:12px;
+      font-size:13px;
     }
 
     .specs div{
@@ -116,8 +129,31 @@
       border-radius:6px;
       padding:6px;
       text-align:center;
-      font-size:13px;
-      color:var(--muted);
+    }
+
+    /* Game detail */
+    .game-detail{
+      max-width:1100px;
+      margin:120px auto;
+      padding:40px;
+      background:rgba(18,24,38,.85);
+      border-radius:20px;
+      scroll-margin-top:80px;
+    }
+
+    .game-images{
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:24px;
+      margin:40px 0;
+    }
+
+    .game-images img{
+      width:100%;
+      max-height:520px;
+      object-fit:contain;
+      border-radius:16px;
+      background:#0b1020;
     }
 
     footer{
@@ -140,54 +176,65 @@
 
 <section class="hero">
   <h1>Ultra-Lightweight Instant Games</h1>
-  <p>Modern instant-win games engineered for mobile-first play.</p>
+  <p>A modern instant-win portfolio engineered for mobile-first play.</p>
+  <div class="cta-row">
+    <a href="#portfolio" class="btn primary">View Portfolio</a>
+  </div>
 </section>
 
 <section id="portfolio">
   <h2>Game Portfolio</h2>
-
   <div class="games">
 
-    <!-- CHAIN REACTOR (UPDATED) -->
     <div class="game-card">
       <h3>Chain Reactor</h3>
-
       <div class="game-icon-wrap">
         <img src="./chain-reactor-icon.png" class="game-icon">
       </div>
-
       <div class="meta">Explosive cascading multipliers</div>
-
-      <p>Chain-trigger mechanics with escalating volatility and instant outcomes.</p>
-
+      <p>Chain-trigger mechanics with escalating volatility.</p>
       <a href="#chain-reactor" class="btn">View Game</a>
-
-      <!-- NEW GAME DETAILS BUTTON -->
-      <a href="#chain-reactor" class="btn" style="
-        margin-top:8px;
-        background:transparent;
-        border-color:#2a3555;
-        color:#9aa3b2;
-      ">
-        Game Details
-      </a>
-
-      <div class="specs">
-        <div>High Vol</div>
-        <div>97% RTP</div>
-        <div>x10,000</div>
-      </div>
+      <div class="specs"><div>High Vol</div><div>97% RTP</div><div>x10,000</div></div>
     </div>
-
-    <!-- OTHER GAMES UNCHANGED -->
-    <!-- (rest of your existing game cards stay exactly as-is) -->
 
   </div>
 </section>
 
-<footer>© Instant Win Portfolio</footer>
+<!-- ========================= -->
+<!-- GAME DETAIL: CHAIN REACTOR -->
+<!-- ========================= -->
+
+<section id="chain-reactor" class="game-detail">
+  <h2>Chain Reactor</h2>
+
+  <a href="#portfolio" class="btn">← Back to Portfolio</a>
+
+  <p>
+    Explosive cascading multiplier gameplay with escalating volatility.
+    Players decide when to stop as risk and rewards intensify.
+  </p>
+
+  <div class="game-images">
+    <img src="./chain-reactor-landscape.jpg" alt="Chain Reactor Landscape">
+    <img src="./chain-reactor-portrait.png" alt="Chain Reactor Portrait">
+  </div>
+
+  <!-- ✅ GAME DETAILS BUTTON (NEW) -->
+  <a href="#chain-reactor-details" class="btn primary" style="margin-bottom:24px;">
+    Game Details
+  </a>
+
+  <div class="specs">
+    <div>High Volatility</div>
+    <div>97% RTP</div>
+    <div>Max Win x10,000</div>
+  </div>
+</section>
+
+<footer>
+  © Instant Win Portfolio · Single-page prototype
+</footer>
 
 </body>
 </html>
-
 
