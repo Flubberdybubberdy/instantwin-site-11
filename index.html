@@ -1,119 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Instant Win Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Instant Win Portfolio</title>
 
-  <style>
-    :root{
-      --bg:#0b0e14;
-      --panel:#121826;
-      --accent:#00f0ff;
-      --accent-soft:rgba(0,240,255,0.15);
-      --text:#e6e9f0;
-      --muted:#9aa3b2;
-      --border:#1c2335;
-    }
+<style>
+:root{
+  --bg:#0b0e14;
+  --panel:#121826;
+  --accent:#00f0ff;
+  --accent-soft:rgba(0,240,255,0.15);
+  --text:#e6e9f0;
+  --muted:#9aa3b2;
+  --border:#1c2335;
+}
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
-      background:linear-gradient(180deg,#070a10 0%,var(--bg) 40%);
-      color:var(--text);
-    }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
+  background:linear-gradient(180deg,#070a10 0%,var(--bg) 40%);
+  color:var(--text);
+}
 
-    section{
-      padding:80px 20px;
-      max-width:1200px;
-      margin:0 auto;
-    }
+section{
+  padding:80px 20px;
+  max-width:1200px;
+  margin:0 auto;
+}
 
-    h1,h2,h3{margin:0 0 12px 0;letter-spacing:.3px}
-    h1{font-size:42px}
-    h2{font-size:28px}
-    h3{font-size:18px;min-height:44px}
-    p{margin:0 0 16px 0;color:var(--muted);line-height:1.6;min-height:52px}
+h1,h2,h3{margin:0 0 12px 0;letter-spacing:.3px}
+h1{font-size:42px}
+h2{font-size:28px}
+h3{font-size:18px}
+p{margin:0 0 16px 0;color:var(--muted);line-height:1.6}
 
-    /* Header */
-    .site-header{
-      position:sticky;top:0;z-index:100;
-      padding:18px 28px;
-      background:linear-gradient(180deg,rgba(11,14,20,.95),rgba(11,14,20,.6));
-      backdrop-filter:blur(8px);
-      border-bottom:1px solid rgba(255,255,255,0.06);
-    }
-    .brand-wrap{
-      max-width:1200px;margin:0 auto;
-      display:flex;align-items:center;gap:14px;
-    }
-    .brand-logo{
-      height:48px;display:block;
-      filter:drop-shadow(0 0 10px rgba(0,240,255,0.15));
-    }
-    .brand-tagline{
-      font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
-      border-left:1px solid rgba(255,255,255,0.12);padding-left:14px;line-height:1;
-    }
+/* Header */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  padding:18px 28px;
+  background:linear-gradient(180deg,rgba(11,14,20,.95),rgba(11,14,20,.6));
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
 
-    /* Buttons */
-    .btn{
-      padding:14px 22px;border-radius:8px;
-      border:1px solid var(--accent);
-      color:var(--accent);
-      background:linear-gradient(180deg,rgba(0,240,255,.08),rgba(0,240,255,.02));
-      text-decoration:none;font-weight:600;letter-spacing:.2px;
-      display:inline-flex;align-items:center;justify-content:center;gap:6px;
-      transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;
-    }
-    .btn.primary{background:var(--accent);color:#000}
+.brand-wrap{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;gap:14px;
+}
 
-    /* NEW: detail action bar */
-    .detail-actions{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin:16px 0 24px 0;
-      gap:16px;
-    }
+.brand-logo{
+  height:48px;display:block;
+  filter:drop-shadow(0 0 10px rgba(0,240,255,0.15));
+}
 
-    /* (rest of your original CSS remains unchanged) */
-  </style>
+.brand-tagline{
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  border-left:1px solid rgba(255,255,255,0.12);padding-left:14px;line-height:1;
+}
+
+/* Buttons */
+.btn{
+  padding:14px 22px;
+  border-radius:8px;
+  border:1px solid var(--accent);
+  color:var(--accent);
+  background:linear-gradient(180deg,rgba(0,240,255,.08),rgba(0,240,255,.02));
+  text-decoration:none;
+  font-weight:600;
+  letter-spacing:.2px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;
+}
+
+.btn.primary{
+  background:var(--accent);
+  color:#000;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  border-color:rgba(0,240,255,.6);
+  background:linear-gradient(180deg,rgba(0,240,255,.16),rgba(0,240,255,.04));
+  box-shadow:0 6px 18px rgba(0,0,0,.45),0 0 0 1px rgba(0,240,255,.12);
+}
+
+/* GAME DETAIL */
+.game-detail{
+  max-width:1100px;
+  margin:120px auto;
+  padding:40px;
+  background:rgba(18,24,38,.85);
+  border-radius:20px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.04);
+  scroll-margin-top:80px;
+}
+
+/* ✅ FIXED ACTION BAR */
+.detail-actions{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:16px 0 24px 0;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.detail-actions .btn{
+  width:auto !important;
+  padding:12px 18px;
+  font-size:14px;
+  min-width:160px;
+}
+
+.detail-actions .btn.primary{
+  background:linear-gradient(180deg,#00f0ff,#00c6d6);
+  color:#000;
+  border:1px solid rgba(0,240,255,.6);
+}
+
+.detail-actions .btn.primary:hover{
+  background:linear-gradient(180deg,#00ffff,#00ddee);
+}
+
+.game-images{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:24px;
+  margin:40px 0;
+}
+
+.game-images img{
+  width:100%;
+  max-height:520px;
+  object-fit:contain;
+  border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+  background:#0b1020;
+}
+
+@media (max-width:900px){
+  .game-images{grid-template-columns:1fr}
+}
+</style>
 </head>
 
 <body>
 
-<!-- everything above unchanged -->
-
 <section id="chain-reactor" class="game-detail">
-  <h2>Chain Reactor</h2>
 
-  <!-- ✅ REPLACED WITH ACTION BAR -->
-  <div class="detail-actions">
-    <a href="#portfolio" class="btn">← Back to Portfolio</a>
-    <a href="./downloads/chain-reactor.zip" class="btn primary" download>
-      Download ZIP
-    </a>
-  </div>
+<h2>Chain Reactor</h2>
 
-  <p>Explosive cascading multiplier gameplay with escalating volatility.</p>
+<div class="detail-actions">
+  <a href="#portfolio" class="btn">← Back to Portfolio</a>
+  <a href="downloads/chain-reactor.zip" class="btn primary" download>Download ZIP</a>
+</div>
 
-  <div class="game-images">
-    <img src="./chain-reactor-landscape.jpg" alt="Chain Reactor Landscape">
-    <img src="./chain-reactor-portrait.png" alt="Chain Reactor Portrait">
-  </div>
+<p>Explosive cascading multiplier gameplay with escalating volatility.</p>
 
-  <!-- ALL YOUR EXISTING GAME DETAILS CONTENT REMAINS EXACTLY AS IT WAS -->
+<div class="game-images">
+  <img src="./chain-reactor-landscape.jpg" alt="Chain Reactor Landscape">
+  <img src="./chain-reactor-portrait.png" alt="Chain Reactor Portrait">
+</div>
 
 </section>
 
-<!-- ALL OTHER 11 GAMES REMAIN COMPLETELY UNCHANGED -->
-
 </body>
 </html>
-
-
 
 
