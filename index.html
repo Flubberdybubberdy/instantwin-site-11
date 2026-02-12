@@ -1,175 +1,965 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Instant Win Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instant Win Portfolio</title>
 
-<style>
-:root{
-  --bg:#0b0e14;
-  --panel:#121826;
-  --accent:#00f0ff;
-  --accent-soft:rgba(0,240,255,0.15);
-  --text:#e6e9f0;
-  --muted:#9aa3b2;
-  --border:#1c2335;
-}
+  <style>
+    :root{
+      --bg:#0b0e14;
+      --panel:#121826;
+      --accent:#00f0ff;
+      --accent-soft:rgba(0,240,255,0.15);
+      --text:#e6e9f0;
+      --muted:#9aa3b2;
+      --border:#1c2335;
+    }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
-  background:linear-gradient(180deg,#070a10 0%,var(--bg) 40%);
-  color:var(--text);
-}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
+      background:linear-gradient(180deg,#070a10 0%,var(--bg) 40%);
+      color:var(--text);
+    }
 
-section{
-  padding:80px 20px;
-  max-width:1200px;
-  margin:0 auto;
-}
+    section{
+      padding:80px 20px;
+      max-width:1200px;
+      margin:0 auto;
+    }
 
-h1,h2,h3{margin:0 0 12px 0;letter-spacing:.3px}
-h1{font-size:42px}
-h2{font-size:28px}
-h3{font-size:18px}
-p{margin:0 0 16px 0;color:var(--muted);line-height:1.6}
+    h1,h2,h3{margin:0 0 12px 0;letter-spacing:.3px}
+    h1{font-size:42px}
+    h2{font-size:28px}
+    h3{font-size:18px;min-height:44px}
+    p{margin:0 0 16px 0;color:var(--muted);line-height:1.6;min-height:52px}
 
-/* Header */
-.site-header{
-  position:sticky;top:0;z-index:100;
-  padding:18px 28px;
-  background:linear-gradient(180deg,rgba(11,14,20,.95),rgba(11,14,20,.6));
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid rgba(255,255,255,0.06);
-}
+    /* Header */
+    .site-header{
+      position:sticky;top:0;z-index:100;
+      padding:18px 28px;
+      background:linear-gradient(180deg,rgba(11,14,20,.95),rgba(11,14,20,.6));
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .brand-wrap{
+      max-width:1200px;margin:0 auto;
+      display:flex;align-items:center;gap:14px;
+    }
+    .brand-logo{
+      height:48px;display:block;
+      filter:drop-shadow(0 0 10px rgba(0,240,255,0.15));
+    }
+    .brand-tagline{
+      font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+      border-left:1px solid rgba(255,255,255,0.12);padding-left:14px;line-height:1;
+    }
 
-.brand-wrap{
-  max-width:1200px;margin:0 auto;
-  display:flex;align-items:center;gap:14px;
-}
+    /* Hero */
+    .hero{padding-top:120px;text-align:center}
+    .hero p{max-width:720px;margin:0 auto 32px auto;min-height:auto}
+    .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 
-.brand-logo{
-  height:48px;display:block;
-  filter:drop-shadow(0 0 10px rgba(0,240,255,0.15));
-}
+    /* Buttons */
+    .btn{
+      padding:14px 22px;border-radius:8px;
+      border:1px solid var(--accent);
+      color:var(--accent);
+      background:linear-gradient(180deg,rgba(0,240,255,.08),rgba(0,240,255,.02));
+      text-decoration:none;font-weight:600;letter-spacing:.2px;
+      display:inline-flex;align-items:center;justify-content:center;gap:6px;
+      transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;
+    }
+    .btn.primary{background:var(--accent);color:#000}
+    .btn:hover{
+      transform:translateY(-2px);
+      border-color:rgba(0,240,255,.6);
+      background:linear-gradient(180deg,rgba(0,240,255,.16),rgba(0,240,255,.04));
+      box-shadow:0 6px 18px rgba(0,0,0,.45),0 0 0 1px rgba(0,240,255,.12);
+    }
+    .btn:active{transform:translateY(0);box-shadow:0 3px 10px rgba(0,0,0,.4)}
 
-.brand-tagline{
-  font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
-  border-left:1px solid rgba(255,255,255,0.12);padding-left:14px;line-height:1;
-}
+    /* Portfolio grid */
+    .games{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:24px;
+      align-items:stretch;
+    }
 
-/* Buttons */
-.btn{
-  padding:14px 22px;
-  border-radius:8px;
-  border:1px solid var(--accent);
-  color:var(--accent);
-  background:linear-gradient(180deg,rgba(0,240,255,.08),rgba(0,240,255,.02));
-  text-decoration:none;
-  font-weight:600;
-  letter-spacing:.2px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;
-}
+    #portfolio .game-card{
+      background:radial-gradient(120% 120% at 50% 0%,#162033 0%,#0e1322 60%);
+      border:1px solid #1f2a40;
+      border-radius:14px;
+      padding:18px;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+      transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+    }
 
-.btn.primary{
-  background:var(--accent);
-  color:#000;
-}
+    #portfolio .game-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(0,240,255,.35);
+      box-shadow:0 12px 40px rgba(0,0,0,.55),0 0 0 1px rgba(0,240,255,.08);
+    }
+    #portfolio .game-card::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(120deg,transparent,rgba(0,240,255,.06),transparent);
+      opacity:0;transition:opacity .3s ease;pointer-events:none;
+    }
+    #portfolio .game-card:hover::after{opacity:1}
 
-.btn:hover{
-  transform:translateY(-2px);
-  border-color:rgba(0,240,255,.6);
-  background:linear-gradient(180deg,rgba(0,240,255,.16),rgba(0,240,255,.04));
-  box-shadow:0 6px 18px rgba(0,0,0,.45),0 0 0 1px rgba(0,240,255,.12);
-}
+    /* Icon slot */
+    #portfolio .game-icon-wrap{
+      height:300px;
+      display:flex;align-items:center;justify-content:center;
+      margin:8px 0 16px;
+    }
+    #portfolio .game-icon{
+      max-height:100%;
+      max-width:100%;
+      width:auto;
+      object-fit:contain;
+      object-position:center;
+      border-radius:10px;
+      background:#0b1020;
+      box-shadow:0 14px 32px rgba(0,0,0,.45);
+      display:block;
+    }
 
-/* GAME DETAIL */
-.game-detail{
-  max-width:1100px;
-  margin:120px auto;
-  padding:40px;
-  background:rgba(18,24,38,.85);
-  border-radius:20px;
-  box-shadow:0 0 0 1px rgba(255,255,255,.04);
-  scroll-margin-top:80px;
-}
+    #portfolio .btn{width:100%;padding:16px 20px;font-size:16px}
 
-/* ✅ FIXED ACTION BAR */
-.detail-actions{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:16px 0 24px 0;
-  gap:16px;
-  flex-wrap:wrap;
-}
+    .meta{font-size:13px;color:var(--muted);margin-bottom:12px;min-height:18px}
 
-.detail-actions .btn{
-  width:auto !important;
-  padding:12px 18px;
-  font-size:14px;
-  min-width:160px;
-}
+    .specs{
+      font-size:13px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:6px;
+      margin-top:12px;
+    }
+    .specs div{
+      background:#0b1020;
+      border:1px solid #1b2338;
+      border-radius:6px;
+      padding:6px;
+      text-align:center;
+      color:var(--muted);
+    }
 
-.detail-actions .btn.primary{
-  background:linear-gradient(180deg,#00f0ff,#00c6d6);
-  color:#000;
-  border:1px solid rgba(0,240,255,.6);
-}
+    /* Detail sections */
+    .game-detail{
+      max-width:1100px;
+      margin:120px auto;
+      padding:40px;
+      background:rgba(18,24,38,.85);
+      border-radius:20px;
+      box-shadow:0 0 0 1px rgba(255,255,255,.04);
+      scroll-margin-top:80px;
+    }
+    .game-detail h2{font-size:36px;margin-bottom:16px}
+    .game-detail p{max-width:700px;color:#cfd6e6;min-height:auto}
+    .game-detail .btn{
+      display:inline-flex;
+      margin:16px 0 24px;
+      border-color:#2a3555;
+      color:#9aa3b2;
+      background:transparent;
+      width:auto;
+      padding:12px 16px;
+      font-size:14px;
+    }
+    .game-detail .btn:hover{color:var(--accent);border-color:var(--accent)}
 
-.detail-actions .btn.primary:hover{
-  background:linear-gradient(180deg,#00ffff,#00ddee);
-}
+    .game-images{
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:24px;
+      margin:40px 0;
+    }
+    .game-images img{
+      width:100%;
+      max-height:520px;
+      object-fit:contain;
+      border-radius:16px;
+      box-shadow:0 20px 60px rgba(0,0,0,.5);
+      background:#0b1020;
+      display:block;
+    }
+    @media (max-width:900px){
+      .game-images{grid-template-columns:1fr}
+    }
 
-.game-images{
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:24px;
-  margin:40px 0;
-}
+    /* ✅ DETAIL ACTIONS ROW (Back left, Download right) */
+    .detail-actions{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin: 6px 0 18px 0;
+    }
+    .detail-actions .btn{
+      margin: 0; /* override the .game-detail .btn margin */
+    }
+    .btn.download{
+      background: var(--accent);
+      color:#000;
+      border-color: var(--accent);
+      padding: 12px 18px;
+      font-size: 14px;
+      min-width: 170px;
+    }
+    .btn.download:hover{
+      background: var(--accent);
+      border-color: rgba(0,240,255,.75);
+      box-shadow:0 10px 26px rgba(0,0,0,.55),0 0 0 1px rgba(0,240,255,.14);
+    }
 
-.game-images img{
-  width:100%;
-  max-height:520px;
-  object-fit:contain;
-  border-radius:16px;
-  box-shadow:0 20px 60px rgba(0,0,0,.5);
-  background:#0b1020;
-}
+    /* Game details content blocks */
+    .details-content{
+      margin: 10px 0 22px 0;
+      padding: 18px 18px;
+      background: rgba(11,16,32,0.55);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+    }
+    .details-content h3{
+      margin: 0 0 10px 0;
+      font-size: 18px;
+      min-height: auto;
+      color: var(--text);
+    }
+    .details-content h4{
+      margin: 18px 0 10px 0;
+      font-size: 14px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .details-content p{
+      margin: 0 0 12px 0;
+      min-height: auto;
+      color: #cfd6e6;
+    }
+    .details-content ul{
+      margin: 0 0 12px 18px;
+      padding: 0;
+      color: #cfd6e6;
+    }
+    .details-content li{
+      margin: 6px 0;
+      line-height: 1.6;
+    }
+    .details-content .spec-line{
+      color:#cfd6e6;
+      margin: 0;
+    }
 
-@media (max-width:900px){
-  .game-images{grid-template-columns:1fr}
-}
-</style>
+    footer{
+      text-align:center;
+      padding:60px 20px;
+      color:var(--muted);
+      border-top:1px solid var(--border);
+    }
+  </style>
 </head>
 
 <body>
+<header class="site-header">
+  <div class="brand-wrap">
+    <img src="./concept_gaming_logoFinal.png" alt="Concept Gaming" class="brand-logo" />
+    <span class="brand-tagline">Instant Win Supplier</span>
+  </div>
+</header>
 
-<section id="chain-reactor" class="game-detail">
-
-<h2>Chain Reactor</h2>
-
-<div class="detail-actions">
-  <a href="#portfolio" class="btn">← Back to Portfolio</a>
-  <a href="downloads/chain-reactor.zip" class="btn primary" download>Download ZIP</a>
-</div>
-
-<p>Explosive cascading multiplier gameplay with escalating volatility.</p>
-
-<div class="game-images">
-  <img src="./chain-reactor-landscape.jpg" alt="Chain Reactor Landscape">
-  <img src="./chain-reactor-portrait.png" alt="Chain Reactor Portrait">
-</div>
-
+<section class="hero">
+  <h1>Ultra-Lightweight Instant Games</h1>
+  <p>A modern instant-win portfolio engineered for mobile-first play, instant outcomes, and high-volatility engagement.</p>
+  <div class="cta-row">
+    <a href="#portfolio" class="btn primary">View Portfolio</a>
+    <a href="#contact" class="btn">Request Integration</a>
+  </div>
 </section>
 
+<section id="portfolio">
+  <h2>Game Portfolio</h2>
+
+  <div class="games">
+    <!-- 1 -->
+    <div class="game-card" data-game="chain-reactor">
+      <h3>Chain Reactor</h3>
+      <div class="game-icon-wrap"><img src="./chain-reactor-icon.png" alt="Chain Reactor" class="game-icon"></div>
+      <div class="meta">Explosive cascading multipliers</div>
+      <p>Chain-trigger mechanics with escalating volatility and instant outcomes.</p>
+      <a href="#chain-reactor" class="btn">View Game</a>
+      <div class="specs"><div>High Vol</div><div>97% RTP</div><div>x10,000</div></div>
+    </div>
+
+    <!-- 2 -->
+    <div class="game-card" data-game="quantum-mines">
+      <h3>Quantum Mines</h3>
+      <div class="game-icon-wrap"><img src="./quantum-mines-icon.png" alt="Quantum Mines" class="game-icon"></div>
+      <div class="meta">Modernised mines gameplay</div>
+      <p>Pick tiles, manage risk, and cash out at any moment.</p>
+      <a href="#quantum-mines" class="btn">View Game</a>
+      <div class="specs"><div>High Vol</div><div>97% RTP</div><div>x10,000</div></div>
+    </div>
+
+    <!-- 3 -->
+    <div class="game-card" data-game="sovereign-invaders">
+      <h3>Sovereign Invaders</h3>
+      <div class="game-icon-wrap"><img src="./sovereign-invaders-icon.png" alt="Sovereign Invaders" class="game-icon"></div>
+      <div class="meta">Arcade-inspired instant win</div>
+      <p>Progressive multipliers in a futuristic invasion setting.</p>
+      <a href="#sovereign-invaders" class="btn">View Game</a>
+      <div class="specs"><div>High Vol</div><div>98% RTP</div><div>x10,000</div></div>
+    </div>
+
+    <!-- 4 -->
+    <div class="game-card" data-game="sovereign-labyrinth">
+      <h3>Sovereign Labyrinth</h3>
+      <div class="game-icon-wrap"><img src="./sovereign-labyrinth-icon.png" alt="Sovereign Labyrinth" class="game-icon"></div>
+      <div class="meta">Directional decision play</div>
+      <p>Navigate the maze, avoid dead ends, reach high-value exits.</p>
+      <a href="#sovereign-labyrinth" class="btn">View Game</a>
+      <div class="specs"><div>High Vol</div><div>97.5% RTP</div><div>x10,000</div></div>
+    </div>
+
+    <!-- 5 -->
+    <div class="game-card" data-game="sovereign-limbo">
+      <h3>Sovereign Limbo</h3>
+      <div class="game-icon-wrap"><img src="./sovereign-limbo-icon.png" alt="Sovereign Limbo" class="game-icon"></div>
+      <div class="meta">Player-controlled risk</div>
+      <p>Set your multiplier target and beat the system.</p>
+      <a href="#sovereign-limbo" class="btn">View Game</a>
+      <div class="specs"><div>High Vol</div><div>99% RTP</div><div>x10,000</div></div>
+    </div>
+
+    <!-- 6 -->
+    <div class="game-card" data-game="sovereign-plinko">
+      <h3>Sovereign Plinko</h3>
+      <div class="game-icon-wrap"><img src="./sovereign-plinko-icon.png" alt="Sovereign Plinko" class="game-icon"></div>
+      <div class="meta">Physics-driven classic</div>
+      <p>Drop the orb and watch modern physics determine the outcome.</p>
+      <a href="#sovereign-plinko" class="btn">View Game</a>
+      <div class="specs"><div>High Vol</div><div>99% RTP</div><div>x10,000</div></div>
+    </div>
+
+    <!-- 7 -->
+    <div class="game-card" data-game="vault-of-the-sovereign">
+      <h3>Vault of the Sovereign</h3>
+      <div class="game-icon-wrap"><img src="./vault-of-the-sovereign-icon.png" alt="Vault of the Sovereign" class="game-icon"></div>
+      <div class="meta">Pick-and-cash gameplay</div>
+      <p>Reveal vault cells, manage risk, and lock in rewards.</p>
+      <a href="#vault-of-the-sovereign" class="btn">View Game</a>
+      <div class="specs"><div>High Vol</div><div>98.5% RTP</div><div>x10,000</div></div>
+    </div>
+
+    <!-- 8 -->
+    <div class="game-card" data-game="neon-nova">
+      <h3>Neon Nova</h3>
+      <div class="game-icon-wrap"><img src="./neon-nova-icon.png" alt="Neon Nova" class="game-icon"></div>
+      <div class="meta">High-speed arcade volatility</div>
+      <p>Fast-paced instant win action with escalating multipliers.</p>
+      <a href="#neon-nova" class="btn">View Game</a>
+      <div class="specs"><div>High Vol</div><div>98% RTP</div><div>x10,000</div></div>
+    </div>
+
+    <!-- 9 -->
+    <div class="game-card" data-game="neon-blackjack">
+      <h3>Neon Blackjack</h3>
+      <div class="game-icon-wrap">
+        <img src="./neon-blackjack-icon.png" alt="Neon Blackjack" class="game-icon">
+      </div>
+      <div class="meta">Instant blackjack showdown</div>
+      <p>Single-hand blackjack with instant outcomes and rapid replay.</p>
+      <a href="#neon-blackjack" class="btn">View Game</a>
+      <div class="specs"><div>High Vol</div><div>98% RTP</div><div>x10,000</div></div>
+    </div>
+
+    <!-- 10 -->
+    <div class="game-card" data-game="neon-nova-wheel">
+      <h3>Neon Nova Wheel</h3>
+      <div class="game-icon-wrap">
+        <img src="./neon-nova-wheel-icon.png" alt="Neon Nova Wheel" class="game-icon">
+      </div>
+      <div class="meta">Wheel-based volatility spikes</div>
+      <p>Spin, charge, and release into high-impact outcomes.</p>
+      <a href="#neon-nova-wheel" class="btn">View Game</a>
+      <div class="specs"><div>High Vol</div><div>96% RTP</div><div>x5,000</div></div>
+    </div>
+
+    <!-- 11 -->
+    <div class="game-card" data-game="super-poker">
+      <h3>Super Poker</h3>
+      <div class="game-icon-wrap"><img src="./super-poker-portrait.jpg" alt="Super Poker" class="game-icon"></div>
+      <div class="meta">Instant poker mechanics</div>
+      <p>Quick draws, fast decisions, high clarity outcomes.</p>
+      <a href="#super-poker" class="btn">View Game</a>
+      <div class="specs"><div>Med Vol</div><div>98% RTP</div><div>x3,000</div></div>
+    </div>
+
+    <!-- 12 -->
+    <div class="game-card" data-game="neon-heartbeat">
+      <h3>Neon Heartbeat</h3>
+      <div class="game-icon-wrap"><img src="./neon-heartbeat-icon.png" alt="Neon Heartbeat" class="game-icon"></div>
+      <div class="meta">Rhythm-react volatility</div>
+      <p>Ride the pulse and decide when to lock in the win.</p>
+      <a href="#neon-heartbeat" class="btn">View Game</a>
+      <div class="specs"><div>High Vol</div><div>98% RTP</div><div>x1,000</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL SECTIONS (Landscape + Portrait) -->
+<section id="chain-reactor" class="game-detail">
+  <h2>Chain Reactor</h2>
+
+  <div class="detail-actions">
+    <a href="#portfolio" class="btn">← Back to Portfolio</a>
+    <a class="btn download" href="./downloads/chain-reactor.zip" download>Download ZIP</a>
+  </div>
+
+  <p>Explosive cascading multiplier gameplay with escalating volatility.</p>
+  <div class="game-images">
+    <img src="./chain-reactor-landscape.jpg" alt="Chain Reactor Landscape">
+    <img src="./chain-reactor-portrait.png" alt="Chain Reactor Portrait">
+  </div>
+
+  <a href="#chain-reactor-details" class="btn primary" style="margin:0 0 18px 0;">Game Details</a>
+  <div id="chain-reactor-details" class="details-content">
+    <h3>Explosive chain multipliers with instant volatility.</h3>
+    <p>Chain Reactor is a fast-paced crash-style instant-win game built around timing, tension, and escalating risk.</p>
+
+    <h4>Gameplay</h4>
+    <p>Players press the Charge button to start the round. Energy chains begin to build vertically, increasing the active multiplier in real time. The longer the chain continues, the higher the potential win.</p>
+    <p>At any moment, the player must decide when to stop the chain. If the player cashes out before the system crashes, the current multiplier is locked in as a win. If the chain crashes before the player stops it, the round ends immediately with no payout.</p>
+    <p>The challenge lies in judging how far the chain will rise before collapse, creating a constant risk-versus-reward decision loop.</p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li>Familiar crash-style mechanic</li>
+      <li>Real-time multiplier escalation</li>
+      <li>Player-controlled cash-out</li>
+      <li>High tension per second</li>
+      <li>Instant round resolution</li>
+      <li>Unique autoplay functionality unavailable in standard crash games</li>
+    </ul>
+
+    <h4>Autoplay Modes (Concept Gaming Exclusive)</h4>
+    <p>Chain Reactor includes a proprietary autoplay system designed to support different player risk profiles:</p>
+    <ul>
+      <li><strong>Standard Autoplay</strong> – Automatically triggers rounds using default cash-out behaviour for fast, hands-free play.</li>
+      <li><strong>Safe Mode Autoplay</strong> – Focuses on lower-risk play by cashing out earlier in the chain, delivering smoother session flow and reduced volatility.</li>
+      <li><strong>High-Volatility Autoplay</strong> – Pushes deeper into chain progression before cash-out, maximising risk exposure and potential reward.</li>
+    </ul>
+    <p>These autoplay modes are exclusive to Concept Gaming and allow players to tailor volatility without changing core gameplay mechanics.</p>
+
+    <h4>Game Specifications</h4>
+    <p class="spec-line"><strong>RTP:</strong> 98%</p>
+    <p class="spec-line"><strong>Max Win:</strong> x10,000</p>
+  </div>
+
+  <div class="specs"><div>High Volatility</div><div>97% RTP</div><div>Max Win x10,000</div></div>
+</section>
+
+<section id="quantum-mines" class="game-detail">
+  <h2>Quantum Mines</h2>
+
+  <div class="detail-actions">
+    <a href="#portfolio" class="btn">← Back to Portfolio</a>
+    <a class="btn download" href="./downloads/quantum-mines.zip" download>Download ZIP</a>
+  </div>
+
+  <p>Pick tiles, manage risk, and cash out at any moment.</p>
+  <div class="game-images">
+    <img src="./quantum-mines-landscape.jpg" alt="Quantum Mines Landscape">
+    <img src="./quantum-mines-portrait.png" alt="Quantum Mines Portrait">
+  </div>
+
+  <a href="#quantum-mines-details" class="btn primary" style="margin:0 0 18px 0;">Game Details</a>
+  <div id="quantum-mines-details" class="details-content">
+    <h3>A modern re-engineering of a casino classic.</h3>
+    <p>Quantum Mines takes the instantly recognisable mines mechanic and amplifies it with heightened tension, sharper pacing, and Concept Gaming’s neon-futuristic visual language. Every selection pushes the round deeper into risk territory, creating fast, adrenaline-charged decision loops.</p>
+
+    <h4>Gameplay</h4>
+    <p>Players select tiles on a grid, revealing instant rewards while hidden hazards remain active beneath the surface. With every safe tile uncovered, potential winnings increase—but so does the probability of collapse. Players may cash out at any moment, locking in their current win, or continue selecting tiles in pursuit of higher rewards.</p>
+    <p>The thrill comes from reading momentum, managing nerves, and deciding exactly how far to push before risk overtakes reward.</p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li>Instantly familiar mechanic</li>
+      <li>Rapid tension build per selection</li>
+      <li>Clear risk-versus-reward progression</li>
+      <li>Strong replay impulse</li>
+      <li>Ultra-fast round resolution</li>
+    </ul>
+
+    <h4>Autoplay Modes (Concept Gaming Exclusive)</h4>
+    <p>Quantum Mines includes Concept Gaming’s proprietary autoplay system, allowing players to tailor volatility without altering core gameplay:</p>
+    <ul>
+      <li><strong>Safe Mode Autoplay</strong> – Prioritises earlier cash-outs and lower-risk tile progression for smoother, longer sessions.</li>
+      <li><strong>High-Risk Autoplay</strong> – Pushes deeper into the grid before cash-out, increasing volatility and explosive win potential.</li>
+    </ul>
+    <p>This dual-mode autoplay system is exclusive to Concept Gaming and adds a strategic layer beyond standard mines implementations.</p>
+
+    <h4>Game Specifications</h4>
+    <p class="spec-line"><strong>RTP:</strong> 97%</p>
+    <p class="spec-line"><strong>Volatility:</strong> High</p>
+    <p class="spec-line"><strong>Max Win:</strong> x10,000</p>
+  </div>
+
+  <div class="specs"><div>High Volatility</div><div>97% RTP</div><div>Max Win x10,000</div></div>
+</section>
+
+<section id="sovereign-invaders" class="game-detail">
+  <h2>Sovereign Invaders</h2>
+
+  <div class="detail-actions">
+    <a href="#portfolio" class="btn">← Back to Portfolio</a>
+    <a class="btn download" href="./downloads/sovereign-invaders.zip" download>Download ZIP</a>
+  </div>
+
+  <p>Arcade-inspired instant win featuring escalating multipliers.</p>
+  <div class="game-images">
+    <img src="./sovereign-invaders-landscape.jpg" alt="Sovereign Invaders Landscape">
+    <img src="./sovereign-invaders-portrait.png" alt="Sovereign Invaders Portrait">
+  </div>
+
+  <a href="#sovereign-invaders-details" class="btn primary" style="margin:0 0 18px 0;">Game Details</a>
+  <div id="sovereign-invaders-details" class="details-content">
+    <h3>Arcade nostalgia recharged with modern volatility.</h3>
+    <p>Sovereign Invaders draws clear inspiration from classic alien-invasion arcade gameplay, reimagined through Concept Gaming’s futuristic Sovereign universe. The result is a fast, kinetic instant-win experience that feels instantly familiar while delivering modern volatility and rapid-fire outcomes.</p>
+
+    <h4>Gameplay</h4>
+    <p>Players control a futuristic spacecraft, moving left to right across the screen while firing energy shots upward at descending alien formations. Each successful hit unlocks reward value and pushes the round deeper into escalation.</p>
+    <p>A special UFO target periodically crosses the top of the screen, offering enhanced reward potential when hit. Players must balance speed, accuracy, and timing as the round progresses toward either a successful payout or termination.</p>
+    <p>Rounds resolve quickly, keeping tension high and sessions fast.</p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li>Strong arcade familiarity</li>
+      <li>Immediate visual clarity</li>
+      <li>Active player control</li>
+      <li>Fast, satisfying feedback loop</li>
+      <li>High-energy short sessions</li>
+    </ul>
+
+    <h4>Autoplay Mode (Concept Gaming Exclusive)</h4>
+    <p>Sovereign Invaders features a proprietary Concept Gaming autoplay mode that automates ship movement and firing sequences, allowing for ultra-fast, hands-free gameplay. This mode dramatically accelerates round pacing while preserving core gameplay dynamics.</p>
+
+    <h4>Game Specifications</h4>
+    <p class="spec-line"><strong>RTP:</strong> 98%</p>
+    <p class="spec-line"><strong>Volatility:</strong> High</p>
+    <p class="spec-line"><strong>Max Win:</strong> x10,000</p>
+  </div>
+
+  <div class="specs"><div>High Volatility</div><div>98% RTP</div><div>Max Win x10,000</div></div>
+</section>
+
+<section id="sovereign-labyrinth" class="game-detail">
+  <h2>Sovereign Labyrinth</h2>
+
+  <div class="detail-actions">
+    <a href="#portfolio" class="btn">← Back to Portfolio</a>
+    <a class="btn download" href="./downloads/sovereign-labyrinth.zip" download>Download ZIP</a>
+  </div>
+
+  <p>Navigate the maze, avoid dead ends, reach high-value exits.</p>
+  <div class="game-images">
+    <img src="./sovereign-labyrinth-landscape.jpg" alt="Sovereign Labyrinth Landscape">
+    <img src="./sovereign-labyrinth-portrait.png" alt="Sovereign Labyrinth Portrait">
+  </div>
+
+  <a href="#sovereign-labyrinth-details" class="btn primary" style="margin:0 0 18px 0;">Game Details</a>
+  <div id="sovereign-labyrinth-details" class="details-content">
+    <h3>Navigate the maze. Tempt fate. Claim the Sovereign.</h3>
+    <p>Sovereign Labyrinth is a tension-driven instant-win experience built around forward momentum and escalating danger. Every step deeper into the labyrinth increases reward potential—while simultaneously tightening the trap.</p>
+
+    <h4>Gameplay</h4>
+    <p>Players advance through a futuristic neon maze one move at a time. Each successful step unlocks higher rewards, but also increases the risk of hitting a dead end that immediately ends the round.</p>
+    <p>With every decision, players must choose whether to push deeper into the labyrinth in pursuit of greater rewards or secure their winnings early before risk overwhelms opportunity. The further the journey continues, the higher the stakes become.</p>
+    <p>The gameplay creates a constant sense of progression, danger, and temptation, making each round feel like a calculated gamble against the maze itself.</p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li>Clear forward-progression mechanic</li>
+      <li>Escalating risk with every decision</li>
+      <li>Strong sense of journey and tension</li>
+      <li>Simple controls with meaningful choices</li>
+      <li>High replay appeal</li>
+    </ul>
+
+    <h4>Game Specifications</h4>
+    <p class="spec-line"><strong>RTP:</strong> 97.5%</p>
+    <p class="spec-line"><strong>Max Win:</strong> x10,000</p>
+  </div>
+
+  <div class="specs"><div>High Volatility</div><div>97.5% RTP</div><div>Max Win x10,000</div></div>
+</section>
+
+<section id="sovereign-limbo" class="game-detail">
+  <h2>Sovereign Limbo</h2>
+
+  <div class="detail-actions">
+    <a href="#portfolio" class="btn">← Back to Portfolio</a>
+    <a class="btn download" href="./downloads/sovereign-limbo.zip" download>Download ZIP</a>
+  </div>
+
+  <p>Set your multiplier target and beat the system.</p>
+  <div class="game-images">
+    <img src="./sovereign-limbo-landscape.jpg" alt="Sovereign Limbo Landscape">
+    <img src="./sovereign-limbo-portrait.png" alt="Sovereign Limbo Portrait">
+  </div>
+
+  <a href="#sovereign-limbo-details" class="btn primary" style="margin:0 0 18px 0;">Game Details</a>
+  <div id="sovereign-limbo-details" class="details-content">
+    <h3>Set your target. Enter the void. Test the limit.</h3>
+    <p>Sovereign Limbo is a pure, high-speed instant-win experience built around player-defined risk and immediate outcomes. It distils the globally recognised limbo mechanic into a sleek, futuristic Sovereign format designed for rapid decision-making.</p>
+
+    <h4>Gameplay</h4>
+    <p>Players click Enter Limbo to begin the round and select their target multiplier before play starts. Once confirmed, the system instantly runs the outcome sequence, generating a final multiplier that determines the result.</p>
+    <p>If the final outcome multiplier lands above the player’s chosen target, the player wins at the selected multiplier. If it lands below, the round ends immediately. There are no additional inputs, delays, or interruptions—just instant resolution.</p>
+    <p>This creates a clean, high-intensity risk-versus-reward loop where higher targets deliver greater rewards but reduce the probability of success.</p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li>Globally familiar limbo mechanic</li>
+      <li>Player-controlled risk selection</li>
+      <li>Instant outcome generation</li>
+      <li>Ultra-fast round cycles</li>
+      <li>Clear win/lose clarity</li>
+    </ul>
+
+    <h4>Game Specifications</h4>
+    <p class="spec-line"><strong>RTP:</strong> 99%</p>
+    <p class="spec-line"><strong>Volatility:</strong> High</p>
+    <p class="spec-line"><strong>Max Win:</strong> x10,000</p>
+  </div>
+
+  <div class="specs"><div>High Volatility</div><div>99% RTP</div><div>Max Win x10,000</div></div>
+</section>
+
+<section id="sovereign-plinko" class="game-detail">
+  <h2>Sovereign Plinko</h2>
+
+  <div class="detail-actions">
+    <a href="#portfolio" class="btn">← Back to Portfolio</a>
+    <a class="btn download" href="./downloads/sovereign-plinko.zip" download>Download ZIP</a>
+  </div>
+
+  <p>Drop the orb and watch modern physics determine the outcome.</p>
+  <div class="game-images">
+    <img src="./sovereign-plinko-landscape.jpg" alt="Sovereign Plinko Landscape">
+    <img src="./sovereign-plinko-portrait.jpg" alt="Sovereign Plinko Portrait">
+  </div>
+
+  <a href="#sovereign-plinko-details" class="btn primary" style="margin:0 0 18px 0;">Game Details</a>
+  <div id="sovereign-plinko-details" class="details-content">
+    <h3>Classic Plinko reimagined as a precision laser spectacle.</h3>
+    <p>Sovereign Plinko transforms the familiar drop-and-bounce mechanic into a visually striking, high-energy instant-win experience. Instead of traditional pins alone, a central energy orb releases laser beams that dynamically connect to multiplier targets, creating a futuristic interpretation of probability in motion.</p>
+
+    <h4>Gameplay</h4>
+    <p>Players release an orb into the Plinko field, where it interacts with the environment and triggers laser beams that lock onto multipliers positioned across the board. These multipliers scale dramatically, reaching values of up to x10,000, creating moments of intense anticipation as outcomes resolve.</p>
+    <p>The result is a fast, visually charged round that combines physics-driven motion with sudden, decisive outcomes.</p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li>Universally familiar Plinko foundation</li>
+      <li>Highly distinctive laser-based visual identity</li>
+      <li>Minimal input with high excitement</li>
+      <li>Fast resolution and strong replay appeal</li>
+    </ul>
+
+    <h4>Autoplay Mode (Concept Gaming Exclusive)</h4>
+    <p>Sovereign Plinko features Concept Gaming’s proprietary autoplay system with a dedicated Safe Mode. This mode focuses on smoother play patterns and reduced risk exposure, allowing players to enjoy rapid, hands-free sessions while maintaining consistent engagement.</p>
+    <p>This exclusive autoplay implementation differentiates Sovereign Plinko from standard Plinko offerings and enhances its appeal for extended play.</p>
+
+    <h4>Game Specifications</h4>
+    <p class="spec-line"><strong>RTP:</strong> 99%</p>
+    <p class="spec-line"><strong>Volatility:</strong> High</p>
+    <p class="spec-line"><strong>Max Win:</strong> x10,000</p>
+  </div>
+
+  <div class="specs"><div>High Volatility</div><div>99% RTP</div><div>Max Win x10,000</div></div>
+</section>
+
+<section id="vault-of-the-sovereign" class="game-detail">
+  <h2>Vault of the Sovereign</h2>
+
+  <div class="detail-actions">
+    <a href="#portfolio" class="btn">← Back to Portfolio</a>
+    <a class="btn download" href="./downloads/vault-of-the-sovereign.zip" download>Download ZIP</a>
+  </div>
+
+  <p>Reveal vault cells, manage risk, and lock in rewards.</p>
+  <div class="game-images">
+    <img src="./vault-of-the-sovereign-landscape.jpg" alt="Vault of the Sovereign Landscape">
+    <img src="./vault-of-the-sovereign-portrait.jpg" alt="Vault of the Sovereign Portrait">
+  </div>
+
+  <a href="#vault-of-the-sovereign-details" class="btn primary" style="margin:0 0 18px 0;">Game Details</a>
+  <div id="vault-of-the-sovereign-details" class="details-content">
+    <h3>Ultra-lightweight slot play. Stripped back. Supercharged.</h3>
+    <p>Vault of the Sovereign is a minimalist, ultra-fast slot experience built for instant gratification. Designed on a clean 5x4 real matrix with 20 fixed win lines, it delivers classic slot familiarity at modern instant-win speed.</p>
+    <p>This is slot gameplay distilled to its purest, most efficient form.</p>
+
+    <h4>Gameplay</h4>
+    <p>Players place a simple bet and spin into rapid-fire outcomes. With no unnecessary features or delays, each round resolves almost instantly, allowing players to chain spins at high speed.</p>
+    <p>Despite its simplicity, the game supports win potential of up to x10,000, delivering explosive results inside a compact, elegant framework.</p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li>Familiar slot structure with modern pacing</li>
+      <li>Ultra-fast spin resolution</li>
+      <li>Clear, readable win lines</li>
+      <li>High-impact results without visual clutter</li>
+      <li>Perfect for short-session play</li>
+    </ul>
+
+    <h4>Turbo Mode (Concept Gaming Exclusive)</h4>
+    <p>Vault of the Sovereign includes Concept Gaming’s proprietary Turbo Mode, dramatically accelerating spin speed and round resolution. This mode transforms the game into a rapid, punchy experience designed for players who value speed, rhythm, and continuous play.</p>
+    <p>Turbo Mode is exclusive to Concept Gaming and reinforces the title’s identity as a next-generation instant slot.</p>
+
+    <h4>Game Specifications</h4>
+    <p class="spec-line"><strong>Matrix:</strong> 5x4</p>
+    <p class="spec-line"><strong>Win Lines:</strong> 20 (fixed)</p>
+    <p class="spec-line"><strong>RTP:</strong> 97%</p>
+    <p class="spec-line"><strong>Max Win:</strong> x10,000</p>
+  </div>
+
+  <div class="specs"><div>High Volatility</div><div>98.5% RTP</div><div>Max Win x10,000</div></div>
+</section>
+
+<section id="neon-nova" class="game-detail">
+  <h2>Neon Nova</h2>
+
+  <div class="detail-actions">
+    <a href="#portfolio" class="btn">← Back to Portfolio</a>
+    <a class="btn download" href="./downloads/neon-nova.zip" download>Download ZIP</a>
+  </div>
+
+  <p>High-speed instant win gameplay built around rapid escalation.</p>
+  <div class="game-images">
+    <img src="./neon-nova-landscape.jpg" alt="Neon Nova Landscape">
+    <img src="./neon-nova-portrait.png" alt="Neon Nova Portrait">
+  </div>
+
+  <a href="#neon-nova-details" class="btn primary" style="margin:0 0 18px 0;">Game Details</a>
+  <div id="neon-nova-details" class="details-content">
+    <h3>Minimalist colour-matching slot with modern volatility.</h3>
+    <p>Neon Nova is a lightweight, fast-resolution slot experience built around colour matching, clean geometry, and satisfying progression. Designed for speed and clarity, it delivers modern slot excitement without unnecessary complexity.</p>
+
+    <h4>Gameplay</h4>
+    <p>The game is played on a 5×3 grid, where players aim to land matching coloured squares across the matrix. Winning combinations trigger instant payouts and can activate re-spins, allowing successful colours to remain locked in place while the remaining grid refreshes.</p>
+    <p>This creates momentum-driven rounds where wins can chain together naturally, keeping sessions punchy and engaging.</p>
+
+    <h4>Bonus Round</h4>
+    <p>Neon Nova features a distinctive pick-and-reveal bonus round. Players select from coloured squares within the grid, uncovering additional prizes and multipliers. Each choice increases anticipation while maintaining the game’s clean, minimal visual language.</p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li>Instantly understandable colour-matching mechanic</li>
+      <li>Re-spins that extend winning momentum</li>
+      <li>Clear visual feedback and clean geometry</li>
+      <li>Bonus interaction without slowing pace</li>
+      <li>Ideal balance between simplicity and excitement</li>
+    </ul>
+
+    <h4>Game Specifications</h4>
+    <p class="spec-line"><strong>Grid:</strong> 5x3</p>
+    <p class="spec-line"><strong>Volatility:</strong> Medium</p>
+    <p class="spec-line"><strong>RTP:</strong> 95.25%</p>
+  </div>
+
+  <div class="specs"><div>High Volatility</div><div>98% RTP</div><div>Max Win x10,000</div></div>
+</section>
+
+<section id="neon-blackjack" class="game-detail">
+  <h2>Neon Blackjack</h2>
+
+  <div class="detail-actions">
+    <a href="#portfolio" class="btn">← Back to Portfolio</a>
+    <a class="btn download" href="./downloads/neon-blackjack.zip" download>Download ZIP</a>
+  </div>
+
+  <p>Single-hand blackjack with instant outcomes and rapid replay.</p>
+  <div class="game-images">
+    <img src="./neon-blackjack-landscape.jpg" alt="Neon Blackjack Landscape">
+    <img src="./neon-blackjack-portrait.png" alt="Neon Blackjack Portrait">
+  </div>
+
+  <a href="#neon-blackjack-details" class="btn primary" style="margin:0 0 18px 0;">Game Details</a>
+  <div id="neon-blackjack-details" class="details-content">
+    <h3>Pure blackjack. Stripped back. Player-optimised.</h3>
+    <p>Neon Blackjack is an ultra-lightweight, instant-resolution blackjack experience built around the most player-friendly rule set possible. Designed for speed and mathematical efficiency, it delivers a superior margin for blackjack players compared to traditional online implementations.</p>
+
+    <h4>Gameplay</h4>
+    <p>Players are dealt hands instantly under a streamlined blackjack flow with no dealer delays, no table friction, and no unnecessary animations. Outcomes resolve in seconds, preserving the integrity of classic blackjack probability while dramatically accelerating pace.</p>
+    <p>The rule configuration is intentionally optimised to provide the best achievable return for the player, making Neon Blackjack especially attractive to experienced blackjack players who value fairness, speed, and optimal maths.</p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li>Globally recognised blackjack rules</li>
+      <li>Player-optimised margin</li>
+      <li>Instant hand resolution</li>
+      <li>No dealer downtime or table friction</li>
+      <li>Ideal for high-frequency mobile play</li>
+    </ul>
+
+    <h4>Game Specifications</h4>
+    <p class="spec-line"><strong>RTP:</strong> 99.72%</p>
+  </div>
+
+  <div class="specs"><div>High Volatility</div><div>98% RTP</div><div>Max Win x10,000</div></div>
+</section>
+
+<section id="neon-nova-wheel" class="game-detail">
+  <h2>Neon Nova Wheel</h2>
+
+  <div class="detail-actions">
+    <a href="#portfolio" class="btn">← Back to Portfolio</a>
+    <a class="btn download" href="./downloads/neon-nova-wheel.zip" download>Download ZIP</a>
+  </div>
+
+  <p>Spin, charge, and release into high-impact outcomes.</p>
+  <div class="game-images">
+    <img src="./neon-nova-wheel-landscape.jpeg" alt="Neon Nova Wheel Landscape">
+    <img src="./neon-nova-wheel-portrait-v2.png" alt="Neon Nova Wheel Portrait">
+  </div>
+
+  <a href="#neon-nova-wheel-details" class="btn primary" style="margin:0 0 18px 0;">Game Details</a>
+  <div id="neon-nova-wheel-details" class="details-content">
+    <h3>Spin the wheel. Charge the system. Unlock higher tiers.</h3>
+    <p>Neon Nova Wheel is a high-energy, Wheel-of-Fortune–style instant-win game built around progression, anticipation, and escalating rewards. Every spin contributes to a broader journey rather than a single isolated outcome.</p>
+
+    <h4>Gameplay</h4>
+    <p>Players spin the wheel to win instant prizes while simultaneously charging a progression meter. Each spin fills the charge meter incrementally. Once the meter reaches the top, the game advances to the next prize tier, where reward values increase significantly.</p>
+    <p>Players can progress through up to three tiers, with each level offering higher-value outcomes and increased excitement. The further players climb, the greater the prize potential becomes.</p>
+
+    <h4>Bonus Wheel</h4>
+    <p>Reaching the highest tier unlocks a dedicated Bonus Wheel, where players spin for extra-large prizes. This final stage delivers the most dramatic payoff moments in the game, rewarding sustained progression and repeat spins.</p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li>Instantly familiar wheel mechanic</li>
+      <li>Clear progression across multiple tiers</li>
+      <li>Strong anticipation through charge-building</li>
+      <li>Short, repeatable spins with long-term payoff</li>
+      <li>Visually vibrant neon presentation</li>
+    </ul>
+
+    <h4>Game Specifications</h4>
+    <p class="spec-line"><strong>Tiers:</strong> 3 + Bonus Wheel</p>
+    <p class="spec-line"><strong>Volatility:</strong> Medium</p>
+    <p class="spec-line"><strong>RTP:</strong> 95.25%</p>
+    <p class="spec-line"><strong>Max Win:</strong> x1000</p>
+  </div>
+
+  <div class="specs"><div>High Volatility</div><div>96% RTP</div><div>Max Win x5,000</div></div>
+</section>
+
+<section id="super-poker" class="game-detail">
+  <h2>Super Poker</h2>
+
+  <div class="detail-actions">
+    <a href="#portfolio" class="btn">← Back to Portfolio</a>
+    <a class="btn download" href="./downloads/super-poker.zip" download>Download ZIP</a>
+  </div>
+
+  <p>Quick draws, fast decisions, high clarity outcomes.</p>
+  <div class="game-images">
+    <img src="./super-poker-landscape.jpeg" alt="Super Poker Landscape">
+    <img src="./super-poker-portrait-v2.jpg" alt="Super Poker Portrait">
+  </div>
+
+  <a href="#super-poker-details" class="btn primary" style="margin:0 0 18px 0;">Game Details</a>
+  <div id="super-poker-details" class="details-content">
+    <h3>Classic video poker, enhanced with a second-chance twist.</h3>
+    <p>Super Poker is a modern, ultra-lightweight video poker experience built on a familiar Jacks or Better–style format, delivering instant clarity, fast hands, and trusted probability foundations.</p>
+    <p>What sets Super Poker apart is Concept Gaming’s exclusive Super Draw Round, which introduces an additional opportunity to win without complicating the core game.</p>
+
+    <h4>Gameplay</h4>
+    <p>Players are dealt a standard poker hand and choose which cards to hold, following the well-known Jacks or Better structure. The hand resolves instantly, delivering immediate results based on classic poker rankings.</p>
+    <p>If the initial hand does not result in a win, the game can trigger the Super Draw Round, giving players a second chance to improve their outcome from the same bet. This additional draw increases engagement and excitement while preserving the integrity of video poker mechanics.</p>
+
+    <h4>Super Draw Round (Concept Gaming Exclusive)</h4>
+    <p>The Super Draw Round is a proprietary feature unique to Concept Gaming. It activates as an extra opportunity to convert near-miss hands into winning outcomes, extending gameplay without slowing pace or adding complexity.</p>
+    <p>This feature enhances perceived value and player satisfaction while keeping sessions fast and efficient.</p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li>Familiar Jacks or Better foundation</li>
+      <li>Instant hand resolution</li>
+      <li>Extra win opportunity without added friction</li>
+      <li>Strong appeal to traditional poker players</li>
+      <li>Lightweight, mobile-friendly design</li>
+    </ul>
+
+    <h4>Game Specifications</h4>
+    <p class="spec-line"><strong>Format:</strong> Jacks or better–style video poker</p>
+    <p class="spec-line"><strong>RTP:</strong> 97.2%</p>
+  </div>
+
+  <div class="specs"><div>Medium Volatility</div><div>98% RTP</div><div>Max Win x3,000</div></div>
+</section>
+
+<section id="neon-heartbeat" class="game-detail">
+  <h2>Neon Heartbeat</h2>
+
+  <div class="detail-actions">
+    <a href="#portfolio" class="btn">← Back to Portfolio</a>
+    <a class="btn download" href="./downloads/neon-heartbeat.zip" download>Download ZIP</a>
+  </div>
+
+  <p>Ride the pulse and decide when to lock in the win.</p>
+  <div class="game-images">
+    <img src="./neon-heartbeat-landscape.png" alt="Neon Heartbeat Landscape">
+    <img src="./neon-heartbeat-portrait.jpg" alt="Neon Heartbeat Portrait">
+  </div>
+
+  <a href="#neon-heartbeat-details" class="btn primary" style="margin:0 0 18px 0;">Game Details</a>
+  <div id="neon-heartbeat-details" class="details-content">
+    <h3>Timing, tension, and pure rhythm-driven volatility.</h3>
+    <p>Neon Heartbeat is a fast-paced instant-win game built around rhythm, escalation, and player timing. Inspired by real-world heartbeat monitoring, the game converts pulse patterns into a live multiplier curve, creating a uniquely intuitive risk-versus-reward experience.</p>
+    <p>Every round unfolds in real time, with the multiplier rising and falling in sync with the heartbeat signal. The player’s challenge is simple but intense: read the rhythm, feel the momentum, and decide exactly when to lock in before the beat collapses.</p>
+
+    <h4>Gameplay</h4>
+    <p>Players start the round and watch the heartbeat signal animate across the screen. As the rhythm continues, the active multiplier increases dynamically.</p>
+    <p>At any moment, the player can choose to cash out, securing the current multiplier as a win. If the heartbeat flatlines before the player cashes out, the round ends immediately with no payout.</p>
+    <p>The experience is highly visual and instinctive, relying on pattern recognition, timing, and nerve rather than complex mechanics.</p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li>Instantly readable heartbeat metaphor</li>
+      <li>Strong emotional tension driven by rhythm</li>
+      <li>Clear live multiplier progression</li>
+      <li>Simple one-input decision loop</li>
+      <li>Extremely fast round resolution</li>
+      <li>Highly engaging on mobile portrait</li>
+    </ul>
+
+    <h4>Game Specifications</h4>
+    <p class="spec-line"><strong>RTP:</strong> 98%</p>
+    <p class="spec-line"><strong>Volatility:</strong> High</p>
+    <p class="spec-line"><strong>Max Win:</strong> x1,000</p>
+  </div>
+
+  <div class="specs"><div>High Volatility</div><div>—</div><div>—</div></div>
+</section>
+
+<section id="contact">
+  <h2>Partner With Us</h2>
+  <p>Built for operators, aggregators, and platforms launching or expanding instant-win verticals.</p>
+  <p><strong>Contact:</strong> info@concept-gaming.com</p>
+</section>
+
+<footer>© Instant Win Portfolio · Single-page prototype</footer>
 </body>
 </html>
 
