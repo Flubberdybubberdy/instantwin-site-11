@@ -10,95 +10,115 @@
   --bg:#0b0e14;
   --panel:#121826;
   --accent:#00f0ff;
+  --accent-soft:rgba(0,240,255,0.15);
   --text:#e6e9f0;
   --muted:#9aa3b2;
   --border:#1c2335;
 }
 
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
   background:linear-gradient(180deg,#070a10 0%,var(--bg) 40%);
   color:var(--text);
 }
+
 section{
   padding:80px 20px;
   max-width:1200px;
   margin:0 auto;
 }
-h1,h2,h3{margin:0 0 12px}
-p{color:var(--muted);line-height:1.6}
 
-/* Buttons */
+h1,h2,h3{margin:0 0 12px 0;letter-spacing:.3px}
+h1{font-size:42px}
+h2{font-size:28px}
+h3{font-size:18px;min-height:44px}
+p{margin:0 0 16px 0;color:var(--muted);line-height:1.6;min-height:52px}
+
+/* HEADER */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  padding:18px 28px;
+  background:linear-gradient(180deg,rgba(11,14,20,.95),rgba(11,14,20,.6));
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.brand-wrap{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;gap:14px;
+}
+.brand-logo{height:48px}
+
+/* HERO */
+.hero{padding-top:120px;text-align:center}
+.hero p{max-width:720px;margin:0 auto 32px auto;min-height:auto}
+
+/* BUTTONS */
 .btn{
-  padding:12px 18px;
+  padding:14px 22px;
   border-radius:8px;
   border:1px solid var(--accent);
   color:var(--accent);
-  background:transparent;
+  background:linear-gradient(180deg,rgba(0,240,255,.08),rgba(0,240,255,.02));
   text-decoration:none;
   font-weight:600;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  transition:.2s;
+  gap:6px;
+  transition:all .2s ease;
 }
+.btn.primary{background:var(--accent);color:#000}
 .btn:hover{
-  background:rgba(0,240,255,.1);
-}
-.btn.primary{
-  background:var(--accent);
-  color:#000;
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(0,0,0,.45);
 }
 .btn.download{
   background:var(--accent);
   color:#000;
-  border-color:var(--accent);
-  min-width:170px;
+  min-width:180px;
+}
+
+/* DETAIL ACTIONS ROW */
+.detail-actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:24px;
+}
+
+.detail-actions-right{
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
 
 /* GAME ID BOX */
 .game-id-box{
-  display:flex;
-  align-items:center;
-  gap:8px;
   padding:10px 16px;
   border-radius:8px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  font-size:13px;
-  letter-spacing:.05em;
-}
-.game-id-label{
-  color:var(--muted);
-  text-transform:uppercase;
-  font-size:11px;
-}
-.game-id-value{
+  background:rgba(0,240,255,.08);
+  border:1px solid rgba(0,240,255,.35);
   color:var(--accent);
-  font-weight:600;
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.game-id-box span{
+  font-weight:700;
+  margin-left:6px;
+  color:#fff;
 }
 
-/* Detail layout */
+/* GAME DETAIL */
 .game-detail{
   margin:120px auto;
   padding:40px;
   background:rgba(18,24,38,.85);
   border-radius:20px;
-}
-.detail-actions{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  flex-wrap:wrap;
-  margin:20px 0 30px 0;
-}
-.detail-right{
-  display:flex;
-  align-items:center;
-  gap:16px;
 }
 .game-images{
   display:grid;
@@ -108,198 +128,44 @@ p{color:var(--muted);line-height:1.6}
 }
 .game-images img{
   width:100%;
+  object-fit:contain;
   border-radius:16px;
   background:#0b1020;
 }
-@media (max-width:900px){
+@media(max-width:900px){
   .game-images{grid-template-columns:1fr}
-  .detail-actions{flex-direction:column;align-items:flex-start}
-  .detail-right{width:100%;justify-content:space-between}
 }
 </style>
 </head>
 
 <body>
 
+<!-- EXAMPLE GAME DETAIL WITH GAME ID -->
 <section id="chain-reactor" class="game-detail">
-<h2>Chain Reactor</h2>
+  <h2>Chain Reactor</h2>
 
-<div class="detail-actions">
-  <a href="#portfolio" class="btn">← Back to Portfolio</a>
-  <div class="detail-right">
-    <div class="game-id-box">
-      <span class="game-id-label">Game ID</span>
-      <span class="game-id-value">CR-001</span>
+  <div class="detail-actions">
+    <a href="#portfolio" class="btn">← Back to Portfolio</a>
+
+    <div class="detail-actions-right">
+      <div class="game-id-box">
+        GAME ID:<span> TBD-001 </span>
+      </div>
+      <a class="btn download" href="./downloads/chain-reactor.zip" download>Download ZIP</a>
     </div>
-    <a class="btn download" href="./downloads/chain-reactor.zip" download>Download ZIP</a>
   </div>
-</div>
 
-<p>Explosive cascading multiplier gameplay with escalating volatility.</p>
+  <p>Explosive cascading multiplier gameplay with escalating volatility.</p>
 
-<div class="game-images">
-  <img src="./chain-reactor-landscape.jpg">
-  <img src="./chain-reactor-portrait.png">
-</div>
-</section>
-
-
-<section id="quantum-mines" class="game-detail">
-<h2>Quantum Mines</h2>
-<div class="detail-actions">
-  <a href="#portfolio" class="btn">← Back to Portfolio</a>
-  <div class="detail-right">
-    <div class="game-id-box">
-      <span class="game-id-label">Game ID</span>
-      <span class="game-id-value">QM-002</span>
-    </div>
-    <a class="btn download" href="./downloads/quantum-mines.zip" download>Download ZIP</a>
+  <div class="game-images">
+    <img src="./chain-reactor-landscape.jpg">
+    <img src="./chain-reactor-portrait.png">
   </div>
-</div>
-</section>
-
-<section id="sovereign-invaders" class="game-detail">
-<h2>Sovereign Invaders</h2>
-<div class="detail-actions">
-  <a href="#portfolio" class="btn">← Back to Portfolio</a>
-  <div class="detail-right">
-    <div class="game-id-box">
-      <span class="game-id-label">Game ID</span>
-      <span class="game-id-value">SI-003</span>
-    </div>
-    <a class="btn download" href="./downloads/sovereign-invaders.zip" download>Download ZIP</a>
-  </div>
-</div>
-</section>
-
-<section id="sovereign-labyrinth" class="game-detail">
-<h2>Sovereign Labyrinth</h2>
-<div class="detail-actions">
-  <a href="#portfolio" class="btn">← Back to Portfolio</a>
-  <div class="detail-right">
-    <div class="game-id-box">
-      <span class="game-id-label">Game ID</span>
-      <span class="game-id-value">SL-004</span>
-    </div>
-    <a class="btn download" href="./downloads/sovereign-labyrinth.zip" download>Download ZIP</a>
-  </div>
-</div>
-</section>
-
-<section id="sovereign-limbo" class="game-detail">
-<h2>Sovereign Limbo</h2>
-<div class="detail-actions">
-  <a href="#portfolio" class="btn">← Back to Portfolio</a>
-  <div class="detail-right">
-    <div class="game-id-box">
-      <span class="game-id-label">Game ID</span>
-      <span class="game-id-value">SLB-005</span>
-    </div>
-    <a class="btn download" href="./downloads/sovereign-limbo.zip" download>Download ZIP</a>
-  </div>
-</div>
-</section>
-
-<section id="sovereign-plinko" class="game-detail">
-<h2>Sovereign Plinko</h2>
-<div class="detail-actions">
-  <a href="#portfolio" class="btn">← Back to Portfolio</a>
-  <div class="detail-right">
-    <div class="game-id-box">
-      <span class="game-id-label">Game ID</span>
-      <span class="game-id-value">SP-006</span>
-    </div>
-    <a class="btn download" href="./downloads/sovereign-plinko.zip" download>Download ZIP</a>
-  </div>
-</div>
-</section>
-
-<section id="vault-of-the-sovereign" class="game-detail">
-<h2>Vault of the Sovereign</h2>
-<div class="detail-actions">
-  <a href="#portfolio" class="btn">← Back to Portfolio</a>
-  <div class="detail-right">
-    <div class="game-id-box">
-      <span class="game-id-label">Game ID</span>
-      <span class="game-id-value">VS-007</span>
-    </div>
-    <a class="btn download" href="./downloads/vault-of-the-sovereign.zip" download>Download ZIP</a>
-  </div>
-</div>
-</section>
-
-<section id="neon-nova" class="game-detail">
-<h2>Neon Nova</h2>
-<div class="detail-actions">
-  <a href="#portfolio" class="btn">← Back to Portfolio</a>
-  <div class="detail-right">
-    <div class="game-id-box">
-      <span class="game-id-label">Game ID</span>
-      <span class="game-id-value">NN-008</span>
-    </div>
-    <a class="btn download" href="./downloads/neon-nova.zip" download>Download ZIP</a>
-  </div>
-</div>
-</section>
-
-<section id="neon-blackjack" class="game-detail">
-<h2>Neon Blackjack</h2>
-<div class="detail-actions">
-  <a href="#portfolio" class="btn">← Back to Portfolio</a>
-  <div class="detail-right">
-    <div class="game-id-box">
-      <span class="game-id-label">Game ID</span>
-      <span class="game-id-value">NBJ-009</span>
-    </div>
-    <a class="btn download" href="./downloads/neon-blackjack.zip" download>Download ZIP</a>
-  </div>
-</div>
-</section>
-
-<section id="neon-nova-wheel" class="game-detail">
-<h2>Neon Nova Wheel</h2>
-<div class="detail-actions">
-  <a href="#portfolio" class="btn">← Back to Portfolio</a>
-  <div class="detail-right">
-    <div class="game-id-box">
-      <span class="game-id-label">Game ID</span>
-      <span class="game-id-value">NNW-010</span>
-    </div>
-    <a class="btn download" href="./downloads/neon-nova-wheel.zip" download>Download ZIP</a>
-  </div>
-</div>
-</section>
-
-<section id="super-poker" class="game-detail">
-<h2>Super Poker</h2>
-<div class="detail-actions">
-  <a href="#portfolio" class="btn">← Back to Portfolio</a>
-  <div class="detail-right">
-    <div class="game-id-box">
-      <span class="game-id-label">Game ID</span>
-      <span class="game-id-value">SPK-011</span>
-    </div>
-    <a class="btn download" href="./downloads/super-poker.zip" download>Download ZIP</a>
-  </div>
-</div>
-</section>
-
-<section id="neon-heartbeat" class="game-detail">
-<h2>Neon Heartbeat</h2>
-<div class="detail-actions">
-  <a href="#portfolio" class="btn">← Back to Portfolio</a>
-  <div class="detail-right">
-    <div class="game-id-box">
-      <span class="game-id-label">Game ID</span>
-      <span class="game-id-value">NH-012</span>
-    </div>
-    <a class="btn download" href="./downloads/neon-heartbeat.zip" download>Download ZIP</a>
-  </div>
-</div>
 </section>
 
 </body>
 </html>
+
 
 
 
